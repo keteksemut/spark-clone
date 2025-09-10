@@ -35,22 +35,53 @@ dismissBtn.addEventListener('click', () => {
 
 
 
+// const menuToggle = document.getElementById('menu-toggle');
+// const menuBurger = document.querySelector('.header__icon--menu');
+// const menuClose = document.querySelector('.header__icon--close');
+// // const menuDialog = document.getElementById('menu');
+// const headerContainer = document.querySelector('.header__branding');
+
+// menuToggle.addEventListener('click', () => {
+//   // const isOpen = menuDialog.toggleAttribute('open');
+
+//   menuBurger.classList.toggle('active');
+//   menuClose.classList.toggle('active');
+//   headerContainer.classList.toggle('active');
+//   // document.body.style.overflow = isOpen ? 'hidden' : '';
+//   // headerContainer.style.borderBottomColor = isOpen ? "rgba(0, 0, 0, 1)" || "rgba(0, 0, 0, 0)"
+// });
+
 const menuToggle = document.getElementById('menu-toggle');
-const menuBurger = document.querySelector('.menu-toggle__icon--open');
-const menuClose = document.querySelector('.menu-toggle__icon--close');
-const menuDialog = document.getElementById('menu');
-const headerContainer = document.querySelector('.header-container');
+const menuBurger = document.querySelector('.header__icon--menu');
+const menuClose = document.querySelector('.header__icon--close');
+const headerContainer = document.querySelector('.header__branding');
 
-menuToggle.addEventListener('click', () => {
-    const isOpen = menuDialog.toggleAttribute('open');
+// Define the function once
+function toggleMenu() {
+  menuBurger.classList.toggle('active');
+  menuClose.classList.toggle('active');
+  headerContainer.classList.toggle('active');
+}
 
-    menuBurger.classList.toggle('active', isOpen);
-    menuClose.classList.toggle('active', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    headerContainer.style.borderBottomColor = isOpen ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)"
-});
+// Match your CSS breakpoint (adjust to your actual media query)
+const mediaQuery = window.matchMedia("(max-width: 1023px)");
 
+// Function to handle attaching/detaching
+function handleScreenChange(e) {
+  if (e.matches) {
+    // Small screen → attach listener
+    menuToggle.addEventListener('click', toggleMenu);
+  } else {
+    // Larger screen → remove listener
+    menuToggle.removeEventListener('click', toggleMenu);
+  }
+}
 
+// Run on load
+handleScreenChange(mediaQuery);
+
+// Run whenever screen size changes
+mediaQuery.addEventListener("change", handleScreenChange);
 
 
 
@@ -58,17 +89,17 @@ menuToggle.addEventListener('click', () => {
 const header = document.querySelector("header");
 
 if (header) {
-    const updateHeaderHeight = () => {
-        document.documentElement.style.setProperty(
-            "--header-height",
-            `${header.offsetHeight}px`
-        );
-    };
+  const updateHeaderHeight = () => {
+    document.documentElement.style.setProperty(
+      "--header-height",
+      `${header.offsetHeight}px`
+    );
+  };
 
-    // Set initially
-    updateHeaderHeight();
+  // Set initially
+  updateHeaderHeight();
 
-    // Observe header for height changes
-    const ro = new ResizeObserver(updateHeaderHeight);
-    ro.observe(header);
+  // Observe header for height changes
+  const ro = new ResizeObserver(updateHeaderHeight);
+  ro.observe(header);
 }
