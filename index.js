@@ -1,37 +1,37 @@
-// Get current time
 const timeEl = document.getElementById('current-time');
+const banner = document.getElementById('announcement-banner');
+const dismissBtn = document.getElementById('banner-dismiss');
+
 const now = new Date();
 
+// Update <time> element
 timeEl.textContent = now.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit'
 });
 timeEl.setAttribute('datetime', now.toISOString());
 
-// Announcement banner dismiss
-const announcementBanner = document.getElementById('announcementBanner');
+// Read expiry if present
+const expiryAttr = banner.dataset.expiry;
+const expiryDate = expiryAttr ? new Date(expiryAttr) : null;
 
-announcementBanner.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+// Show if not dismissed, and (if expiry exists) not expired
+if (
+  localStorage.getItem('bannerDismissed') !== 'true' &&
+  (!expiryDate || now <= expiryDate)
+) {
+  banner.style.display = 'block'; // or "flex"
+}
 
-    const dateDismissed = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
-    // Save dismissal info (optional in dev)
-    localStorage.setItem(
-        'bannerDismissed',
-        JSON.stringify({ dismissed: true, date: dateDismissed })
-    );
-
-    announcementBanner.style.display = 'none';
+// Handle dismiss click
+dismissBtn.addEventListener('click', () => {
+  banner.style.display = 'none';
+  localStorage.setItem('bannerDismissed', 'true');
 });
 
-// DEV MODE: always show banner on load
-// (Ignore localStorage for now)
-announcementBanner.style.display = 'block';
 
 
 
@@ -42,12 +42,12 @@ const menuDialog = document.getElementById('menu');
 const headerContainer = document.querySelector('.header-container');
 
 menuToggle.addEventListener('click', () => {
-  const isOpen = menuDialog.toggleAttribute('open');
+    const isOpen = menuDialog.toggleAttribute('open');
 
-  menuBurger.classList.toggle('active', isOpen);
-  menuClose.classList.toggle('active', isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-  headerContainer.style.borderBottomColor = isOpen ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)"
+    menuBurger.classList.toggle('active', isOpen);
+    menuClose.classList.toggle('active', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    headerContainer.style.borderBottomColor = isOpen ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)"
 });
 
 
