@@ -32,21 +32,7 @@ dismissBtn.addEventListener("click", () => {
   localStorage.setItem("bannerDismissed", "true");
 });
 
-// const menuToggle = document.getElementById('menu-toggle');
-// const menuBurger = document.querySelector('.header__icon--menu');
-// const menuClose = document.querySelector('.header__icon--close');
-// // const menuDialog = document.getElementById('menu');
-// const headerContainer = document.querySelector('.header__branding');
-
-// menuToggle.addEventListener('click', () => {
-//   // const isOpen = menuDialog.toggleAttribute('open');
-
-//   menuBurger.classList.toggle('active');
-//   menuClose.classList.toggle('active');
-//   headerContainer.classList.toggle('active');
-//   // document.body.style.overflow = isOpen ? 'hidden' : '';
-//   // headerContainer.style.borderBottomColor = isOpen ? "rgba(0, 0, 0, 1)" || "rgba(0, 0, 0, 0)"
-// });
+/* ---------------------------------------------------- */
 
 const menuToggle = document.getElementById("menu-toggle");
 const menuBurger = document.querySelector(".header__icon--menu");
@@ -101,23 +87,8 @@ function handleScreenChange(e) {
 handleScreenChange(mediaQuery);
 mediaQuery.addEventListener("change", handleScreenChange);
 
-/* const header = document.querySelector("header");
+/* ---------------------------------------------------------------------- */
 
-if (header) {
-  const updateHeaderHeight = () => {
-    document.documentElement.style.setProperty(
-      "--header-height",
-      `${header.offsetHeight}px`
-    );
-  };
-
-  // Set initially
-  updateHeaderHeight();
-
-  // Observe header for height changes
-  const ro = new ResizeObserver(updateHeaderHeight);
-  ro.observe(header);
-  } */
 const announcementBanner = document.getElementById("announcement-banner");
 
 if (announcementBanner) {
