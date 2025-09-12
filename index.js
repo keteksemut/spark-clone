@@ -43,50 +43,52 @@ const headerNav = document.querySelector(".nav");
 let menuListenerAttached = false;
 let isMenuOpen = false;
 
-function toggleMenu() {
-  isMenuOpen = !isMenuOpen;
+function resetMenuState(isActive = false) {
+  isMenuOpen = isActive;
+  const elements = [menuBurger, menuClose, headerContainer, headerNav];
+  elements.forEach((el) => el.classList.toggle("active", isActive));
 
-  menuBurger.classList.toggle("active", isMenuOpen);
-  menuClose.classList.toggle("active", isMenuOpen);
-  headerContainer.classList.toggle("active", isMenuOpen);
-  headerNav.classList.toggle("active", isMenuOpen);
-
-  headerNav.removeAttribute("inert");
-  if (!isMenuOpen) headerNav.setAttribute("inert", "true");
-
-  document.body.style.overflow = isMenuOpen ? "hidden" : "";
+  document.body.style.overflow = isActive ? "hidden" : "";
 }
 
-// Media query breakpoint
-const mediaQuery = window.matchMedia("(max-width: 1023px)");
+function updateInertState() {
+  const isMobile = window.matchMedia("(max-width: 1023px)").matches;
 
-function handleScreenChange(e) {
-  if (e.matches) {
-    if (!menuListenerAttached) {
-      menuToggle.addEventListener("click", toggleMenu);
-      menuListenerAttached = true;
-    }
+  if (isMobile && isMenuOpen) {
+    headerNav.removeAttribute("inert");
+  } else if (isMobile) {
+    headerNav.setAttribute("inert", "true");
   } else {
-    if (menuListenerAttached) {
-      menuToggle.removeEventListener("click", toggleMenu);
-      menuListenerAttached = false;
-
-      // Reset menu state
-      isMenuOpen = false;
-      menuBurger.classList.remove("active");
-      menuClose.classList.remove("active");
-      headerContainer.classList.remove("active");
-      headerNav.classList.remove("active");
-      headerNav.setAttribute("inert", "true");
-      document.body.style.overflow = "";
-    }
+    headerNav.removeAttribute("inert"); // Always interactive on desktop
   }
 }
 
+function toggleMenu() {
+  resetMenuState(!isMenuOpen);
+  updateInertState();
+}
+
+function handleScreenChange(e) {
+  const isMobile = e.matches;
+
+  // Manage event listener
+  if (isMobile && !menuListenerAttached) {
+    menuToggle.addEventListener("click", toggleMenu);
+    menuListenerAttached = true;
+  } else if (!isMobile && menuListenerAttached) {
+    menuToggle.removeEventListener("click", toggleMenu);
+    menuListenerAttached = false;
+  }
+
+  // Reset menu state
+  resetMenuState(false);
+  updateInertState();
+}
+
 // Initialize
+const mediaQuery = window.matchMedia("(max-width: 1023px)");
 handleScreenChange(mediaQuery);
 mediaQuery.addEventListener("change", handleScreenChange);
-
 /* ---------------------------------------------------------------------- */
 
 const announcementBanner = document.getElementById("announcement-banner");
