@@ -490,5 +490,10 @@
     </header>
 
     <script type="text/javascript" src="./index.js" defer></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./sw.js");
+      }
+    </script>
   </body>
 </html>
