@@ -587,6 +587,7 @@ a {
   padding: 24px;
   background: #000;
   border-radius: 4px;
+  height: auto;
 }
 
 /* Media Queries */
