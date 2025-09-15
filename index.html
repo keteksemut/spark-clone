@@ -1,509 +1,273 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="icon" href="./favicon.png" />
-    <link
-      rel="preload"
-      href="./assets/fonts/Inter.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link rel="preload" as="style" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <header class="header">
-      <section
-        class="announcement__banner"
-        id="announcement-banner"
-        aria-label="Overdrive Airdrop announcement"
-      >
-        <a
-          class="announcement__banner-link"
-          href="#"
-          target="_self"
-          rel="noopener noreferrer"
-        >
-          <time
-            hidden
-            id="current-time"
-            datetime=""
-            class="announcement__banner-time"
-            id="current-time"
-            datetime=""
-          ></time>
-          <div class="announcement__banner-content">
-            <p class="announcement__banner-text">
-              <strong>Overdrive Airdrop is now claimable.</strong>
-              <span> Stake SPK for 10% Loyalty Booster.</span>
-            </p>
-            <svg
-              class="icon-small announcement__banner-icon"
-              role="img"
-              aria-hidden="true"
-              focusable="false"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                stroke="currentcolor"
-                stroke-linecap="square"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M4 20 19 5M4.5 4.5h15v15"
-              ></path>
-            </svg>
-          </div>
-          <button
-            id="banner-dismiss"
-            class="announcement__banner-dismiss"
-            type="button"
-            aria-label="Dismiss announcement"
-          >
-            <svg
-              class="icon-small announcement__banner-dismiss--icon"
-              width="16"
-              height="16"
-              fill="none"
-              role="img"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M12.996 3.441 3.46 13l-.457-.44 9.538-9.558.456.44Z"
-                fill="currentcolor"
-              ></path>
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M12.541 13 3 3.442 3.459 3 13 12.558l-.459.442Z"
-                fill="currentcolor"
-              ></path>
-              <path
-                clip-rule="evenodd"
-                d="M12.996 3.441 3.46 13l-.457-.44 9.538-9.558.456.44Z"
-                stroke="currentcolor"
-              ></path>
-              <path
-                clip-rule="evenodd"
-                d="M12.541 13 3 3.442 3.459 3 13 12.558l-.459.442Z"
-                stroke="currentcolor"
-              ></path>
-            </svg>
-          </button>
-        </a>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="icon" href="./favicon.png" />
+  <link rel="preload" href="./assets/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" as="style" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=YourFont&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=YourFont&display=swap">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+</head>
 
-      <div class="site-nav">
-        <div class="header__branding">
-          <svg
-            class="header__logo-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="106"
-            height="32"
-            fill="none"
-          >
-            <path
-              fill="url(#a)"
-              d="M17.316 16.61h9.193c.358 0 .464-.497.139-.648l-9.334-4.359v-9.55c0-.355-.467-.472-.628-.156l-3.874 7.604L8.486 7.49c-.287-.133-.578.178-.434.465l2.703 5.381H1.56c-.358 0-.464.497-.138.65l9.333 4.359v9.548c0 .356.468.473.629.157l3.873-7.604 4.32 2.016c.287.134.578-.177.434-.464l-2.696-5.386Z"
-            />
-            <path
-              fill="#101014"
-              d="M60.455 17.744c0 2.863-1.639 5.094-4.443 5.094-2.877 0-4.443-2.157-4.443-5.095 0-2.974 1.675-5.131 4.443-5.131 2.804 0 4.443 2.268 4.443 5.132Zm2.804 0c0-4.314-2.476-7.623-6.846-7.623-1.821 0-3.678.818-4.625 2.417v-2.194H49.02v20.712h2.768v-8.032c.874 1.561 2.658 2.305 4.48 2.305 4.551 0 6.991-3.42 6.991-7.585Zm33.534.297 5.171 7.065h3.46l-6.628-8.999 6.082-5.763h-3.606l-6.3 5.912V4.171h-2.804v20.935h2.804v-5.355l1.821-1.71Zm-20.177-.297c0 2.788-1.493 5.094-4.442 5.094-2.877 0-4.443-2.157-4.443-5.095 0-2.9 1.602-5.131 4.443-5.131 2.658 0 4.442 2.008 4.442 5.132Zm-.218-7.4v1.97c-1.02-1.375-2.84-2.194-4.552-2.194-4.26 0-6.92 3.087-6.92 7.624 0 4.425 2.55 7.585 6.956 7.585 1.748 0 3.787-.744 4.516-2.23v2.007h2.767V10.344h-2.767Zm10.053.669c-.619.483-1.092 1.19-1.42 2.194v-2.863h-2.768v14.762h2.768V18.45c0-1.785.291-3.16.801-4.128.546-1.004 1.457-1.524 2.695-1.524h2.112v-2.454H88.89c-1.02 0-1.82.223-2.44.669Zm-39.834 8.515c0-4.239-3.095-5.206-6.628-6.21-1.93-.446-4.807-1.04-4.807-3.458 0-2.008 2.076-2.789 4.079-2.789 2.258 0 4.042 1.302 4.297 3.607h2.913c-.182-3.83-3.132-6.284-7.174-6.284-3.569 0-7.064 1.785-7.137 5.429 0 4.053 3.059 5.132 6.591 6.098 1.675.484 4.916 1.265 4.916 3.645 0 2.23-2.33 3.086-4.515 3.086-2.695 0-4.516-1.673-4.698-4.425h-2.986c.145 4.053 2.804 7.102 7.647 7.102 3.824 0 7.502-1.599 7.502-5.8Z"
-            />
-            <defs>
-              <linearGradient
-                id="a"
-                x1="20.815"
-                x2="4.893"
-                y1="9.447"
-                y2="21.239"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stop-color="#FA43BD" />
-                <stop offset="1" stop-color="#FFA930" />
-              </linearGradient>
-            </defs>
+<body>
+  <header class="header">
+    <section class="announcement__banner" id="announcement-banner" aria-label="Overdrive Airdrop announcement">
+      <a class="announcement__banner-link" href="#" target="_self" rel="noopener noreferrer">
+        <time hidden id="current-time" datetime="" class="announcement__banner-time" id="current-time"
+          datetime=""></time>
+        <div class="announcement__banner-content">
+          <p class="announcement__banner-text">
+            <strong>Overdrive Airdrop is now claimable.</strong>
+            <span> Stake SPK for 10% Loyalty Booster.</span>
+          </p>
+          <svg class="icon-small announcement__banner-icon" role="img" aria-hidden="true" focusable="false"
+            viewBox="0 0 24 24" fill="none">
+            <path stroke="currentcolor" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5"
+              d="M4 20 19 5M4.5 4.5h15v15"></path>
+          </svg>
+        </div>
+        <button id="banner-dismiss" class="announcement__banner-dismiss" type="button"
+          aria-label="Dismiss announcement">
+          <svg class="icon-small announcement__banner-dismiss--icon" width="16" height="16" fill="none" role="img"
+            aria-hidden="true" focusable="false">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.996 3.441 3.46 13l-.457-.44 9.538-9.558.456.44Z"
+              fill="currentcolor"></path>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.541 13 3 3.442 3.459 3 13 12.558l-.459.442Z"
+              fill="currentcolor"></path>
+            <path clip-rule="evenodd" d="M12.996 3.441 3.46 13l-.457-.44 9.538-9.558.456.44Z" stroke="currentcolor">
+            </path>
+            <path clip-rule="evenodd" d="M12.541 13 3 3.442 3.459 3 13 12.558l-.459.442Z" stroke="currentcolor"></path>
+          </svg>
+        </button>
+      </a>
+    </section>
+
+    <div class="site-nav">
+      <div class="header__branding">
+        <svg class="header__logo-icon" xmlns="http://www.w3.org/2000/svg" width="106" height="32" fill="none">
+          <path fill="url(#a)"
+            d="M17.316 16.61h9.193c.358 0 .464-.497.139-.648l-9.334-4.359v-9.55c0-.355-.467-.472-.628-.156l-3.874 7.604L8.486 7.49c-.287-.133-.578.178-.434.465l2.703 5.381H1.56c-.358 0-.464.497-.138.65l9.333 4.359v9.548c0 .356.468.473.629.157l3.873-7.604 4.32 2.016c.287.134.578-.177.434-.464l-2.696-5.386Z" />
+          <path fill="#101014"
+            d="M60.455 17.744c0 2.863-1.639 5.094-4.443 5.094-2.877 0-4.443-2.157-4.443-5.095 0-2.974 1.675-5.131 4.443-5.131 2.804 0 4.443 2.268 4.443 5.132Zm2.804 0c0-4.314-2.476-7.623-6.846-7.623-1.821 0-3.678.818-4.625 2.417v-2.194H49.02v20.712h2.768v-8.032c.874 1.561 2.658 2.305 4.48 2.305 4.551 0 6.991-3.42 6.991-7.585Zm33.534.297 5.171 7.065h3.46l-6.628-8.999 6.082-5.763h-3.606l-6.3 5.912V4.171h-2.804v20.935h2.804v-5.355l1.821-1.71Zm-20.177-.297c0 2.788-1.493 5.094-4.442 5.094-2.877 0-4.443-2.157-4.443-5.095 0-2.9 1.602-5.131 4.443-5.131 2.658 0 4.442 2.008 4.442 5.132Zm-.218-7.4v1.97c-1.02-1.375-2.84-2.194-4.552-2.194-4.26 0-6.92 3.087-6.92 7.624 0 4.425 2.55 7.585 6.956 7.585 1.748 0 3.787-.744 4.516-2.23v2.007h2.767V10.344h-2.767Zm10.053.669c-.619.483-1.092 1.19-1.42 2.194v-2.863h-2.768v14.762h2.768V18.45c0-1.785.291-3.16.801-4.128.546-1.004 1.457-1.524 2.695-1.524h2.112v-2.454H88.89c-1.02 0-1.82.223-2.44.669Zm-39.834 8.515c0-4.239-3.095-5.206-6.628-6.21-1.93-.446-4.807-1.04-4.807-3.458 0-2.008 2.076-2.789 4.079-2.789 2.258 0 4.042 1.302 4.297 3.607h2.913c-.182-3.83-3.132-6.284-7.174-6.284-3.569 0-7.064 1.785-7.137 5.429 0 4.053 3.059 5.132 6.591 6.098 1.675.484 4.916 1.265 4.916 3.645 0 2.23-2.33 3.086-4.515 3.086-2.695 0-4.516-1.673-4.698-4.425h-2.986c.145 4.053 2.804 7.102 7.647 7.102 3.824 0 7.502-1.599 7.502-5.8Z" />
+          <defs>
+            <linearGradient id="a" x1="20.815" x2="4.893" y1="9.447" y2="21.239" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FA43BD" />
+              <stop offset="1" stop-color="#FFA930" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <button id="menu-toggle" class="header__menu-toggle" aria-haspopup="true" aria-label="Menu"
+          aria-expanded="false" aria-controls="primary-navigation">
+          <svg class="icon-medium header__icon--menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            fill="none" aria-hidden="true">
+            <path stroke="#fff" d="M2 7.5h20m-20 8h20m-20-4h20"></path>
           </svg>
 
-          <button
-            id="menu-toggle"
-            class="header__menu-toggle"
-            aria-haspopup="true"
-            aria-label="Menu"
-            aria-expanded="false"
-            aria-controls="primary-navigation"
-          >
-            <svg
-              class="icon-medium header__icon--menu"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path stroke="#fff" d="M2 7.5h20m-20 8h20m-20-4h20"></path>
-            </svg>
+          <svg class="icon-medium header__icon--close" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            fill="none" aria-hidden="true">
+            <path fill="#fff" fill-rule="evenodd" d="M19.701 4.706 5 20l-.704-.704L18.998 4.003l.703.703Z"
+              clip-rule="evenodd" />
+            <path fill="#fff" fill-rule="evenodd" d="M19 20 4.293 4.707 5 4l14.707 15.293L19 20Z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
 
-            <svg
-              class="icon-medium header__icon--close"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                fill="#fff"
-                fill-rule="evenodd"
-                d="M19.701 4.706 5 20l-.704-.704L18.998 4.003l.703.703Z"
-                clip-rule="evenodd"
-              />
-              <path
-                fill="#fff"
-                fill-rule="evenodd"
-                d="M19 20 4.293 4.707 5 4l14.707 15.293L19 20Z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </button>
-        </div>
+      <nav inert class="nav" id="primary-navigation" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li class="nav__dropdown-label nav__dropdown-label--mobile">
+            Spark
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#"> Savings </a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#"> SparkLend </a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#"> SPK </a>
+          </li>
 
-        <nav
-          inert
-          class="nav"
-          id="primary-navigation"
-          aria-label="Main navigation"
-        >
-          <ul class="nav__list">
-            <li class="nav__dropdown-label nav__dropdown-label--mobile">
-              Spark
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="#"> Savings </a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="#"> SparkLend </a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="#"> SPK </a>
-            </li>
+          <li class="nav__item nav__item--has-dropdown">
+            <button class="nav__dropdown-toggle nav__dropdown-toggle--desktop" aria-expanded="false"
+              aria-controls="learn-submenu">
+              Learn
 
-            <li class="nav__item nav__item--has-dropdown">
-              <button
-                class="nav__dropdown-toggle nav__dropdown-toggle--desktop"
-                aria-expanded="false"
-                aria-controls="learn-submenu"
-              >
-                Learn
-
-                <span class="nav__toggle-icons">
-                  <svg
-                    class="icon-small nav__icon--minus"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="none"
-                  >
-                    <path fill="#101014" d="M9.772 7.453v1h-4v-1h4Z"></path>
-                  </svg>
-                  <svg
-                    class="icon-small nav__icon--plus"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      fill="#101014"
-                      d="M7.49 11V5h1.02v6H7.49ZM5 8.51V7.49h6v1.02H5Z"
-                    ></path>
-                  </svg>
-                </span>
-              </button>
-
-              <h3 class="nav__dropdown-label nav__dropdown-label--mobile">
-                Learn
-              </h3>
-
-              <div class="nav__submenu-wrapper" aria-hidden="true">
-                <ul
-                  class="nav__submenu"
-                  id="socials-submenu"
-                  aria-label="Learn"
-                >
-                  <li>
-                    <a class="nav__submenu-link" href="#"
-                      >FAQ
-                      <span class="link__icon-container">
-                        <svg
-                          class="icon-small link__icon--default"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            stroke="#101014"
-                            stroke-linecap="square"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            d="M4 20 19 5M4.5 4.5h15v15"
-                          />
-                        </svg>
-                        <svg
-                          class="icon-small link__icon--hover"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            stroke="#101014"
-                            stroke-linecap="square"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            d="M4 20 19 5M4.5 4.5h15v15"
-                          />
-                        </svg>
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav__submenu-link" href="#"
-                      >Docs
-                      <span class="link__icon-container">
-                        <svg
-                          class="icon-small link__icon--default"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            stroke="#101014"
-                            stroke-linecap="square"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            d="M4 20 19 5M4.5 4.5h15v15"
-                          />
-                        </svg>
-                        <svg
-                          class="icon-small link__icon--hover"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            stroke="#101014"
-                            stroke-linecap="square"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            d="M4 20 19 5M4.5 4.5h15v15"
-                          />
-                        </svg>
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav__submenu-link" href="#"
-                      >Audits
-                      <span class="link__icon-container">
-                        <svg
-                          class="icon-small link__icon--default"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            stroke="#101014"
-                            stroke-linecap="square"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            d="M4 20 19 5M4.5 4.5h15v15"
-                          />
-                        </svg>
-                        <svg
-                          class="icon-small link__icon--hover"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            stroke="#101014"
-                            stroke-linecap="square"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            d="M4 20 19 5M4.5 4.5h15v15"
-                          />
-                        </svg>
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav__submenu-link" href="#"
-                      >Data Dashboard
-                      <span class="link__icon-container">
-                        <svg
-                          class="icon-small link__icon--default"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            stroke="#101014"
-                            stroke-linecap="square"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            d="M4 20 19 5M4.5 4.5h15v15"
-                          />
-                        </svg>
-                        <svg
-                          class="icon-small link__icon--hover"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            stroke="#101014"
-                            stroke-linecap="square"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            d="M4 20 19 5M4.5 4.5h15v15"
-                          />
-                        </svg>
-                      </span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav__item nav__item--has-dropdown">
-              <button
-                class="nav__dropdown-toggle nav__dropdown-toggle--desktop"
-                aria-expanded="false"
-                aria-controls="learn-submenu"
-              >
-                Socials
-
-                <span class="nav__toggle-icons">
-                  <svg
-                    class="icon-small nav__icon--minus"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="none"
-                  >
-                    <path fill="#101014" d="M9.772 7.453v1h-4v-1h4Z"></path>
-                  </svg>
-                  <svg
-                    class="icon-small nav__icon--plus"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      fill="#101014"
-                      d="M7.49 11V5h1.02v6H7.49ZM5 8.51V7.49h6v1.02H5Z"
-                    ></path>
-                  </svg>
-                </span>
-              </button>
-
-              <h3 class="nav__dropdown-label nav__dropdown-label--mobile">
-                Socials
-              </h3>
-              <div class="nav__submenu-wrapper" aria-hidden="true">
-                <ul
-                  class="nav__submenu"
-                  id="socials-submenu"
-                  aria-label="Socials"
-                >
-                  <li>
-                    <a class="nav__submenu-link" href="#">X</a>
-                  </li>
-                  <li>
-                    <a class="nav__submenu-link" href="#">Discord</a>
-                  </li>
-                  <li>
-                    <a class="nav__submenu-link" href="#">Blog</a>
-                  </li>
-                  <li>
-                    <a class="nav__submenu-link" href="#">Telegram</a>
-                  </li>
-                  <li>
-                    <a class="nav__submenu-link" href="#">Youtube</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="nav__item"><a class="nav__link" href="#">GitHub</a></li>
-            <li class="nav__item"><a class="nav__link" href="#">Forum</a></li>
-          </ul>
-
-          <div class="cta cta--has-dropdown">
-            <button
-              class="cta__toggle cta__toggle--desktop"
-              aria-expanded="false"
-              aria-controls="spark-anchor-submenu"
-            >
-              Open Spark
               <span class="nav__toggle-icons">
-                <svg
-                  class="icon-small nav__icon--minus"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="none"
-                >
-                  <path fill="currentcolor" d="M9.772 7.453v1h-4v-1h4Z"></path>
+                <svg class="icon-small nav__icon--minus" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="none">
+                  <path fill="#101014" d="M9.772 7.453v1h-4v-1h4Z"></path>
                 </svg>
-                <svg
-                  class="icon-small nav__icon--plus"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                >
-                  <path
-                    fill="currentcolor"
-                    d="M7.49 11V5h1.02v6H7.49ZM5 8.51V7.49h6v1.02H5Z"
-                  ></path>
+                <svg class="icon-small nav__icon--plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                  fill="none">
+                  <path fill="#101014" d="M7.49 11V5h1.02v6H7.49ZM5 8.51V7.49h6v1.02H5Z"></path>
                 </svg>
               </span>
             </button>
 
-            <div class="cta__submenu-wrapper">
-              <ul class="cta__submenu" id="spark-anchor-submenu">
+            <h3 class="nav__dropdown-label nav__dropdown-label--mobile">
+              Learn
+            </h3>
+
+            <div class="nav__submenu-wrapper" aria-hidden="true">
+              <ul class="nav__submenu" id="socials-submenu" aria-label="Learn">
                 <li>
-                  <a class="cta__submenu-link" href="#">Borrow USDS at 5.64%</a>
+                  <a class="nav__submenu-link" href="#">FAQ
+                    <span class="link__icon-container">
+                      <svg class="icon-small link__icon--default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none">
+                        <path stroke="#101014" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5"
+                          d="M4 20 19 5M4.5 4.5h15v15" />
+                      </svg>
+                      <svg class="icon-small link__icon--hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none">
+                        <path stroke="#101014" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5"
+                          d="M4 20 19 5M4.5 4.5h15v15" />
+                      </svg>
+                    </span>
+                  </a>
                 </li>
                 <li>
-                  <a class="cta__submenu-link" href="#"
-                    >Earn 4.75% with Savings</a
-                  >
+                  <a class="nav__submenu-link" href="#">Docs
+                    <span class="link__icon-container">
+                      <svg class="icon-small link__icon--default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none">
+                        <path stroke="#101014" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5"
+                          d="M4 20 19 5M4.5 4.5h15v15" />
+                      </svg>
+                      <svg class="icon-small link__icon--hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none">
+                        <path stroke="#101014" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5"
+                          d="M4 20 19 5M4.5 4.5h15v15" />
+                      </svg>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="nav__submenu-link" href="#">Audits
+                    <span class="link__icon-container">
+                      <svg class="icon-small link__icon--default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none">
+                        <path stroke="#101014" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5"
+                          d="M4 20 19 5M4.5 4.5h15v15" />
+                      </svg>
+                      <svg class="icon-small link__icon--hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none">
+                        <path stroke="#101014" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5"
+                          d="M4 20 19 5M4.5 4.5h15v15" />
+                      </svg>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="nav__submenu-link" href="#">Data Dashboard
+                    <span class="link__icon-container">
+                      <svg class="icon-small link__icon--default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none">
+                        <path stroke="#101014" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5"
+                          d="M4 20 19 5M4.5 4.5h15v15" />
+                      </svg>
+                      <svg class="icon-small link__icon--hover" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none">
+                        <path stroke="#101014" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5"
+                          d="M4 20 19 5M4.5 4.5h15v15" />
+                      </svg>
+                    </span>
+                  </a>
                 </li>
               </ul>
             </div>
-          </div>
-        </nav>
-      </div>
-    </header>
+          </li>
+          <li class="nav__item nav__item--has-dropdown">
+            <button class="nav__dropdown-toggle nav__dropdown-toggle--desktop" aria-expanded="false"
+              aria-controls="learn-submenu">
+              Socials
 
-    <script type="text/javascript" src="./index.js" defer></script>
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("./sw.js");
-      }
-    </script>
-  </body>
+              <span class="nav__toggle-icons">
+                <svg class="icon-small nav__icon--minus" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="none">
+                  <path fill="#101014" d="M9.772 7.453v1h-4v-1h4Z"></path>
+                </svg>
+                <svg class="icon-small nav__icon--plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                  fill="none">
+                  <path fill="#101014" d="M7.49 11V5h1.02v6H7.49ZM5 8.51V7.49h6v1.02H5Z"></path>
+                </svg>
+              </span>
+            </button>
+
+            <h3 class="nav__dropdown-label nav__dropdown-label--mobile">
+              Socials
+            </h3>
+            <div class="nav__submenu-wrapper" aria-hidden="true">
+              <ul class="nav__submenu" id="socials-submenu" aria-label="Socials">
+                <li>
+                  <a class="nav__submenu-link" href="#">X</a>
+                </li>
+                <li>
+                  <a class="nav__submenu-link" href="#">Discord</a>
+                </li>
+                <li>
+                  <a class="nav__submenu-link" href="#">Blog</a>
+                </li>
+                <li>
+                  <a class="nav__submenu-link" href="#">Telegram</a>
+                </li>
+                <li>
+                  <a class="nav__submenu-link" href="#">Youtube</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav__item"><a class="nav__link" href="#">GitHub</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Forum</a></li>
+        </ul>
+
+        <div class="cta cta--has-dropdown">
+          <button class="cta__toggle cta__toggle--desktop" aria-expanded="false" aria-controls="spark-anchor-submenu">
+            Open Spark
+            <span class="nav__toggle-icons">
+              <svg class="icon-small nav__icon--minus" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="none">
+                <path fill="currentcolor" d="M9.772 7.453v1h-4v-1h4Z"></path>
+              </svg>
+              <svg class="icon-small nav__icon--plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                fill="none">
+                <path fill="currentcolor" d="M7.49 11V5h1.02v6H7.49ZM5 8.51V7.49h6v1.02H5Z"></path>
+              </svg>
+            </span>
+          </button>
+
+          <div class="cta__submenu-wrapper">
+            <ul class="cta__submenu" id="spark-anchor-submenu">
+              <li>
+                <a class="cta__submenu-link" href="#">Borrow USDS at 5.64%</a>
+              </li>
+              <li>
+                <a class="cta__submenu-link" href="#">Earn 4.75% with Savings</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <script type="text/javascript" src="./index.js" defer></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js");
+    }
+  </script>
+</body>
+
 </html>
