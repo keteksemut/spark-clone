@@ -568,21 +568,21 @@ a {
   display: none;
 }
 
-/* CTA */
 .cta__submenu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  column-gap: 4px;
-  margin-top: 10px;
-  left: 0;
-  right: 0;
-  padding: 4px;
   color: #fff;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  margin-top: 20px;
+  padding: 4px;
+
   font-size: 13px;
   line-height: 16px;
 }
+
 .cta__submenu li {
+  display: flex;
+  align-items: center;
   flex: 1;
   padding: 24px;
   background: #000;
