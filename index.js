@@ -112,124 +112,84 @@ if (announcementBanner) {
 // =============================================================================
 
 // =============================================================================
-// Dropdown menu logic (only for desktop ≥ 1024px)
 
-const elements = {
-  siteNav: document.querySelector(".site-nav"),
-  dropdownButtons: document.querySelectorAll(".nav__dropdown-toggle, .cta__toggle"),
-  dropdownContainers: document.querySelectorAll(".nav__submenu-wrapper, .cta__submenu-wrapper")
-};
+const siteNav = document.querySelector(".site-nav");
+const dropdownButton = document.querySelectorAll(
+  ".nav__dropdown-toggle, .cta__toggle",
+);
+const submenuWrapper = document.querySelectorAll(
+  ".nav__submenu-wrapper, .cta__submenu-wrapper",
+);
 
-// Animation helper
-function animateHeight(element, targetHeight) {
-  element.style.maxHeight = element.scrollHeight + "px";
-  requestAnimationFrame(() => {
-    element.style.maxHeight = targetHeight;
-  });
-}
+submenuWrapper.forEach((wrapper) => {
+  const height = wrapper.scrollHeight;
 
-function closeAllDropdowns() {
-  const openContainers = document.querySelectorAll(".nav__submenu-wrapper.open, .cta__submenu-wrapper.open");
-  const activeButtons = document.querySelectorAll(".nav__dropdown-toggle.active, .cta__toggle.active");
-  
-  openContainers.forEach(container => {
-    animateHeight(container, "0px");
-    container.classList.remove("active", "open");
-  });
-  
-  activeButtons.forEach(btn => {
-    btn.classList.remove("active");
-    btn.querySelectorAll(".nav__icon--plus, .nav__icon--minus").forEach(icon => {
-      icon.classList.remove("active");
+  wrapper.style.setProperty("--wrapper-height", `${height + 1}px`);
+});
+
+dropdownButton.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    submenuWrapper.forEach((wrapper, i) => {
+      const isActive = i === index && !wrapper.classList.contains("active");
+      wrapper.classList.toggle("active", isActive);
+      wrapper.toggleAttribute("inert", !isActive);
+
+      dropdownButton[i].setAttribute("aria-expanded", isActive.toString());
     });
+    const hasActive = [...submenuWrapper].some((wrapper) =>
+      wrapper.classList.contains("active"),
+    );
+    siteNav.classList.toggle("active", hasActive);
   });
-  
-  elements.siteNav.classList.remove("active");
-}
+});
 
-function toggleDropdown(container, button) {
-  const isOpen = container.classList.contains("open");
-  const icons = button.querySelectorAll(".nav__icon--plus, .nav__icon--minus");
-  
-  if (isOpen) {
-    // Closing
-    animateHeight(container, "0px");
-    container.classList.remove("open");
-    button.classList.remove("active");
-    icons.forEach(icon => icon.classList.remove("active"));
-  } else {
-    // Opening - close others first
-    closeAllDropdowns();
-    
-    container.classList.add("open");
-    button.classList.add("active");
-    elements.siteNav.classList.add("active");
-    icons.forEach(icon => icon.classList.add("active"));
-    
-    animateHeight(container, container.scrollHeight + "px");
+// Outside click handler
+document.addEventListener("click", (event) => {
+  const clickedInside = [...dropdownButton, ...submenuWrapper].some((el) =>
+    el.contains(event.target),
+  );
+
+  if (!clickedInside) {
+    submenuWrapper.forEach((wrapper) => {
+      wrapper.classList.remove("active");
+      wrapper.setAttribute("inert", "");
+    });
+    siteNav.classList.remove("active");
   }
-  
-  container.addEventListener("transitionend", function handleTransition() {
-    if (container.classList.contains("open")) {
-      container.style.maxHeight = "none"; // Allow natural resizing
+});
+
+// === Focus Trap Utility ===
+let currentTrap = null;
+
+function trapFocus(container) {
+  releaseFocus(); // clear any existing trap
+  currentTrap = (event) => {
+    if (event.key !== "Tab") return;
+
+    const focusable = container.querySelectorAll(
+      'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])',
+    );
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const isShift = event.shiftKey;
+
+    if (!isShift && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    } else if (isShift && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
     }
-    
-    // Clean up siteNav state
-    const hasOpenDropdowns = document.querySelector(".nav__submenu-wrapper.open, .cta__submenu-wrapper.open");
-    if (!hasOpenDropdowns) {
-      elements.siteNav.classList.remove("active");
-    }
-    
-    container.removeEventListener("transitionend", handleTransition);
-  });
+  };
+
+  document.addEventListener("keydown", currentTrap);
 }
 
-// Media query to enable dropdowns only on desktop
-const desktopQuery = window.matchMedia("(min-width: 1024px)");
-
-function handleDesktopChange(e) {
-  if (e.matches) {
-    // Switching to desktop
-    closeAllDropdowns(); // make sure no open state lingers
-    elements.dropdownContainers.forEach(container => {
-      container.style.maxHeight = "0px"; // desktop default: collapsed
-    });
-
-    elements.siteNav.addEventListener("click", siteNavClickHandler);
-    document.addEventListener("click", outsideClickHandler);
-  } else {
-    // Switching to mobile
-    closeAllDropdowns(); // remove classes
-    elements.dropdownContainers.forEach(container => {
-      container.style.maxHeight = ""; // mobile default: natural flow
-    });
-
-    elements.siteNav.removeEventListener("click", siteNavClickHandler);
-    document.removeEventListener("click", outsideClickHandler);
+function releaseFocus() {
+  if (currentTrap) {
+    document.removeEventListener("keydown", currentTrap);
+    currentTrap = null;
   }
 }
-
-// Event handlers (kept separate so we can remove them)
-function siteNavClickHandler(e) {
-  const button = e.target.closest(".nav__dropdown-toggle, .cta__toggle");
-  if (!button) return;
-  
-  e.stopPropagation();
-  const container = button.classList.contains("nav__dropdown-toggle") 
-    ? button.closest(".nav__item").querySelector(".nav__submenu-wrapper")
-    : document.querySelector(".cta__submenu-wrapper");
-    
-  if (container) {
-    toggleDropdown(container, button);
-  }
-}
-
-function outsideClickHandler(e) {
-  if (!elements.siteNav.contains(e.target)) {
-    closeAllDropdowns();
-  }
-}
-
-// Initialize
-handleDesktopChange(desktopQuery);
-desktopQuery.addEventListener("change", handleDesktopChange);

@@ -574,9 +574,21 @@ a {
 }
 
 .nav__link,
+.nav__dropdown-toggle,
+.cta__toggle {
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.nav__link,
 .nav__submenu-link {
   font-size: 24px;
   font-weight: 500;
+}
+
+.nav__link:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px #101014;
 }
 
 .nav__submenu {
@@ -627,7 +639,7 @@ a {
     padding: 3px 4px 4px 40px;
     background-color: #fff;
     border-bottom: 1px solid transparent;
-    transition: border-color .25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: border-color 0.3s ease;
   }
 
   .site-nav.active {
@@ -655,10 +667,6 @@ a {
     padding-top: 0;
     opacity: 1;
     overflow-y: visible;
-  }
-
-  .nav__item {
-    padding: 4px;
   }
 
   .nav__list {
@@ -691,7 +699,7 @@ a {
 
   .nav__submenu-wrapper {
     position: absolute;
-    top: 51px;
+    top: 48px;
   }
 
   .nav__submenu-wrapper,
@@ -708,14 +716,19 @@ a {
       max-height 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  .nav__submenu-wrapper.active,
+  .cta__submenu-wrapper.active {
+    max-height: var(--wrapper-height);
+  }
+
   .nav__submenu,
   .cta__submenu {
     padding: 8px;
     row-gap: 8px;
   }
 
-  .nav__submenu>li,
-  .cta__submenu>li {
+  .nav__submenu > li,
+  .cta__submenu > li {
     display: flex;
     align-self: stretch;
   }
@@ -754,7 +767,7 @@ a {
     background-color: #101014;
     border-radius: 8px;
     cursor: pointer;
-    transition: .25s cubic-bezier(0.2,0,0,1);
+    transition: 0.25s cubic-bezier(0.2, 0, 0, 1);
   }
 
   .cta__toggle:hover {
@@ -762,8 +775,12 @@ a {
   }
 
   .cta__toggle:active {
-    background-color: #23232b
-;
+    background-color: #23232b;
+  }
+
+  .cta__toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px inset #5823f3;
   }
 
   .nav__toggle-icons,
