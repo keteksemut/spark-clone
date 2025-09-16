@@ -121,6 +121,9 @@ const submenuWrapper = document.querySelectorAll(
   ".nav__submenu-wrapper, .cta__submenu-wrapper",
 );
 
+const plusIcons = document.querySelectorAll(".nav__icon--plus");
+const minusIcons = document.querySelectorAll(".nav__icon--minus");
+
 submenuWrapper.forEach((wrapper) => {
   const height = wrapper.scrollHeight;
 
@@ -135,6 +138,8 @@ dropdownButton.forEach((button, index) => {
       wrapper.toggleAttribute("inert", !isActive);
 
       dropdownButton[i].setAttribute("aria-expanded", isActive.toString());
+      plusIcons[i]?.classList.toggle("active", isActive);
+      minusIcons[i]?.classList.toggle("active", isActive);
     });
     const hasActive = [...submenuWrapper].some((wrapper) =>
       wrapper.classList.contains("active"),
