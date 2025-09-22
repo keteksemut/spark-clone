@@ -371,6 +371,12 @@ template {
 
 body {
   font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-feature-settings:
+    "ss01" on,
+    "ss02" on,
+    "liga" off;
 }
 
 button {
@@ -545,6 +551,7 @@ a {
   overflow-y: auto;
   opacity: 0;
   transition: opacity 0.3s ease;
+  background-color: white;
 }
 .nav.active {
   opacity: 1;
@@ -668,6 +675,12 @@ a {
 
 /* Media Queries */
 @media (min-width: 1024px) {
+  .header {
+    position: fixed;
+    left: 0;
+    right: 0;
+  }
+
   .announcement__banner-icon {
     display: block;
   }
@@ -679,12 +692,15 @@ a {
     display: flex;
     justify-content: space-between;
     padding: 0 4px 0 16px;
-    background: #fff;
+    background-color: hsla(0, 0%, 100%, 0.8);
+    -webit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s ease;
   }
+
   .site-nav.active {
-    border-bottom-color: #000;
+    border-color: #101014;
   }
 
   .header__branding {
@@ -743,17 +759,22 @@ a {
   .nav__submenu-wrapper,
   .cta__submenu-wrapper {
     position: absolute;
-    top: 42px;
-    border: 1px solid black;
-    border-top: 0;
+    top: 45px;
+    /* border: 1px solid black; */
+    /* border-top: 0; */
     border-radius: 0 0 8px 8px;
     background-color: #fff;
     z-index: -1;
     max-height: 0;
     overflow: hidden;
+    pointer-events: auto;
     transition:
       opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
       max-height 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow:
+      0 1px 0 0 #101014,
+      -1px 0 0 0 #101014,
+      1px 0 0 0 #101014;
   }
   .nav__submenu-wrapper.active,
   .cta__submenu-wrapper.active {
@@ -782,6 +803,11 @@ a {
     text-wrap: nowrap;
     border-radius: 8px;
     padding: 8px 10px 8px 12px;
+  }
+
+  .nav__submenu-link:active,
+  .cta__submenu-link:active {
+    background-color: #d9d8e3;
   }
 
   .nav__item--has-dropdown {
@@ -850,7 +876,7 @@ a {
     margin-left: 18px;
   }
   .cta__submenu-wrapper {
-    top: 57px;
+    top: 60px;
     left: 0;
     right: 0;
   }
@@ -880,11 +906,40 @@ a {
     font-size: 14px;
     line-height: 20px;
   }
+
+  .nav__submenu-wrapper {
+    top: 50px;
+  }
+
+  .cta__submenu-wrapper {
+    top: 66px;
+  }
 }
 @media (min-width: 1920px) {
   .site-nav {
     padding: 4px 4px 4px 40px;
   }
+
+  .nav__submenu-wrapper {
+    top: 52px;
+  }
+
+  .cta__submenu-wrapper {
+    top: 67px;
+  }
+
+  .nav__submenu-link,
+  .cta__submenu-link {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    padding: 8px 10px 8px 12px;
+  }
+
+  .cta__submenu-link {
+    text-wrap: auto;
+  }
+
   .nav__link,
   .nav__dropdown-toggle,
   .cta__toggle {
